@@ -1,0 +1,12 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="LGPLv3"
+# issueTrackerURL="https://change.me.to.your.issue.tracker.example.invalid/"
+[[mods]]
+modId="tabularasa"
+version="${file.jarVersion}"
+displayName="Tabula Rasa"
+# logoFile="tabularasa.png"
+authors="TurtyWurty"
+displayTest="IGNORE_ALL_VERSION"
+description='''A highly abstract UI for Minecraft Forge.'''
