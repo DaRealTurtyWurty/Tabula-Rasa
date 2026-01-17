@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "tabula-rasa",
+  "version": "${version}",
+  "name": "Tabula Rasa",
+  "description": "A UI library mod designed to be used with the Tech mod Indstria.",
+  "authors": [
+    "TurtyWurty"
+  ],
+  "contact": {
+    "homepage": "https://turtywurty.dev/tabula-rasa",
+    "sources": "https://github.com/DaRealTurtyWurty/Tabula-Rasa"
+  },
+  "license": "CC0-1.0",
+  "icon": "assets/tabula-rasa/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "dev.turtywurty.tabularasa.TabulaRasa"
+    ],
+    "client": [
+      "dev.turtywurty.tabularasa.TabulaRasaClient"
+    ]
+  },
+  "mixins": [
+
+  ],
+  "depends": {
+    "fabricloader": ">=0.18.4",
+    "minecraft": "~26.1-",
+    "java": ">=25",
+    "fabric-api": "*"
+  },
+  "accessWidener": "tabula-rasa.accesswidener"
+}

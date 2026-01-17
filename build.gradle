@@ -1,0 +1,127 @@
+plugins {
+    id 'net.fabricmc.fabric-loom' version "${loom_version}"
+    id 'maven-publish'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+    archivesName = project.archives_base_name
+}
+
+repositories {
+
+}
+
+loom {
+    splitEnvironmentSourceSets()
+
+    accessWidenerPath = file("src/main/resources/${project.archives_base_name}.accesswidener")
+
+    mods {
+        "tabula-rasa" {
+            sourceSet sourceSets.main
+            sourceSet sourceSets.client
+        }
+    }
+
+    runConfigs.configureEach {
+        ideConfigGenerated = false
+        vmArg("-XX:+AllowEnhancedClassRedefinition")
+    }
+}
+
+sourceSets {
+    testmod {
+        compileClasspath += sourceSets.main.compileClasspath
+        compileClasspath += sourceSets.main.output
+        runtimeClasspath += sourceSets.main.runtimeClasspath
+        runtimeClasspath += sourceSets.main.output
+    }
+
+    testmodclient {
+        compileClasspath += sourceSets.main.compileClasspath
+        compileClasspath += sourceSets.main.output
+        runtimeClasspath += sourceSets.main.runtimeClasspath
+        runtimeClasspath += sourceSets.main.output
+        compileClasspath += sourceSets.client.compileClasspath
+        compileClasspath += sourceSets.client.output
+        runtimeClasspath += sourceSets.client.runtimeClasspath
+        runtimeClasspath += sourceSets.client.output
+
+        compileClasspath += sourceSets.testmod.compileClasspath
+        runtimeClasspath += sourceSets.testmod.runtimeClasspath
+        compileClasspath += sourceSets.testmod.output
+        runtimeClasspath += sourceSets.testmod.output
+    }
+}
+
+loom {
+    runs {
+        testmodClient {
+            client()
+            name = "Testmod Client"
+            source sourceSets.testmodclient
+        }
+
+        testmodServer {
+            server()
+            name = "Testmod Server"
+            source sourceSets.testmod
+        }
+    }
+
+    mods {
+        "testmod" {
+            sourceSet sourceSets.testmod
+            sourceSet sourceSets.testmodclient
+        }
+    }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+
+    implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+}
+
+processResources {
+    inputs.property "version", project.version
+
+    filesMatching("fabric.mod.json") {
+        expand "version": inputs.properties.version
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    it.options.release = 25
+}
+
+java {
+    withSourcesJar()
+
+    sourceCompatibility = JavaVersion.VERSION_25
+    targetCompatibility = JavaVersion.VERSION_25
+}
+
+jar {
+    inputs.property "archivesName", project.base.archivesName
+
+    from("LICENSE") {
+        rename { "${it}_${inputs.properties.archivesName}" }
+    }
+}
+
+publishing {
+    publications {
+        create("mavenJava", MavenPublication) {
+            artifactId = project.archives_base_name
+            from components.java
+        }
+    }
+
+    repositories {
+    }
+}

@@ -1,0 +1,14 @@
+accessWidener v2 official
+
+accessible method net/minecraft/client/gui/GuiGraphics innerBlit (Lcom/mojang/blaze3d/pipeline/RenderPipeline;Lnet/minecraft/resources/Identifier;IIIIFFFFI)V
+accessible method net/minecraft/client/gui/screens/Screen setInitialFocus ()V
+accessible method net/minecraft/client/gui/screens/Screen setInitialFocus (Lnet/minecraft/client/gui/components/events/GuiEventListener;)V
+accessible method net/minecraft/client/gui/screens/Screen changeFocus (Lnet/minecraft/client/gui/ComponentPath;)V
+accessible method net/minecraft/client/gui/screens/Screen clearWidgets ()V
+accessible method net/minecraft/client/gui/screens/Screen rebuildWidgets ()V
+accessible method net/minecraft/client/gui/screens/Screen fadeWidgets (F)V
+accessible method net/minecraft/client/gui/screens/Screen panoramaShouldSpin ()Z
+accessible method net/minecraft/client/gui/screens/Screen getUsageNarration ()Lnet/minecraft/network/chat/Component;
+accessible method net/minecraft/client/gui/screens/Screen updateNarratedWidget (Lnet/minecraft/client/gui/narration/NarrationElementOutput;)V
+accessible method net/minecraft/client/gui/screens/Screen updateNarrationState (Lnet/minecraft/client/gui/narration/NarrationElementOutput;)V
+accessible method net/minecraft/client/gui/screens/Screen shouldNarrateNavigation ()Z

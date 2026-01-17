@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "testmod",
+  "version": "${version}",
+  "name": "Tabula Rasa Test Mod",
+  "description": "A test mod for Tabula Rasa.",
+  "authors": [
+    "TurtyWurty"
+  ],
+  "license": "CC0-1.0",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "dev.turtywurty.testmod.TestMod"
+    ],
+    "client": [
+      "dev.turtywurty.testmod.TestModClient"
+    ]
+  },
+  "mixins": [
+
+  ],
+  "depends": {
+    "fabricloader": ">=0.18.4",
+    "minecraft": "~26.1-",
+    "java": ">=25",
+    "fabric-api": "*"
+  }
+}
